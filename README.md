@@ -2,9 +2,9 @@
 
 A webgl earth making it easy to add custom shapes at coordinates in realtime.
 
-![example gif](http://mikevanrossum.nl/stuff/realtime-bitcoin-globe/realtime-globe.gif)
+![example gif](http://mikevanrossum.nl/stuff/realtime-webgl-globe/realtime-globe.gif)
 
-[Demo](http://mikevanrossum.nl/stuff/realtime-bitcoin-globe/example.html)!
+[Demo](http://mikevanrossum.nl/stuff/realtime-webgl-globe/example.html)!
 
 ## Features
 
