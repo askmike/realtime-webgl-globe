@@ -2,9 +2,9 @@
 
 A webgl earth making it easy to add custom shapes at coordinates in realtime.
 
-![example gif](http://mikevanrossum.nl/stuff/realtime-webgl-globe/realtime-globe.gif)
+![example gif](http://mikevanrossum.nl/stuff/realtime-bitcoin-globe/realtime-globe.gif)
 
-[Demo](http://mikevanrossum.nl/stuff/realtime-webgl-globe/example.html)!
+[Demo](http://mikevanrossum.nl/stuff/realtime-bitcoin-globe/example.html)!
 
 ## Features
 
@@ -51,11 +51,11 @@ A webgl earth making it easy to add custom shapes at coordinates in realtime.
 - @param container DOM Node div
 - @param urls Object URLs of images:
 
-      {
-        earth: String URL
-        bump: Sting URL [optional]
-        specular: String URL [optional]
-      }
+```{
+  earth: String URL
+  bump: Sting URL [optional]
+  specular: String URL [optional]
+}```
 
 Constructor function, creates a globe.
 
@@ -90,10 +90,10 @@ distance from the earth's core.
 
 - @param Object coordinates:
 
-      {
-        lat: (Float) latitute position,
-        lon: (Float) longtitute position
-      }
+```{
+  lat: (Float) latitute position,
+  lon: (Float) longtitute position
+}```
  
 Transition the globe from its current position
 to the new coordinates.
@@ -102,10 +102,10 @@ to the new coordinates.
 
 - @param Object coordinates:
 
-      {
-        lat: (Float) latitute position,
-        lon: (Float) longtitute position
-      }
+```{
+  lat: (Float) latitute position,
+  lon: (Float) longtitute position
+}```
 
 Center the globe on the new coordinates.
 
@@ -113,12 +113,12 @@ Center the globe on the new coordinates.
 
 - @param Object data:
   
-      {
-        lat: (Float) latitute position,
-        lon: (Float) longtitute position,
-        size: (Float) size of block,
-        color: (String) color of block
-      }
+```{
+  lat: (Float) latitute position,
+  lon: (Float) longtitute position,
+  size: (Float) size of block,
+  color: (String) color of block
+}```
    
 Adds a block to the globe. The globe will spawn
 just below the earth's surface and `levitate`
@@ -129,12 +129,12 @@ earth.
 
 - @param Object data
 
-      {
-        lat: (Float) latitute position,
-        lon: (Float) longtitute position,
-        size: (Float) size of block,
-        color: (String) color of block
-      }
+```{
+  lat: (Float) latitute position,
+  lon: (Float) longtitute position,
+  size: (Float) size of block,
+  color: (String) color of block
+}```
  
  Adds a block to the globe.
 
