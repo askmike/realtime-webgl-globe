@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en_US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Realtime WebGL Globe Example</title>
+    <meta name="description" content="A webgl earth making it easy to add shapes at coordinates in realtime.">
+    <style>
+
+      body {
+        padding: 0;
+        margin: 0;
+        background: black;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id='globe'></div>
+    </main>
+      
+    </script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js'></script>
+    <script src='globe.js'></script>
+    <script>
+
+      var div = document.getElementById('globe');
+      var urls = {
+        earth: 'img/world.jpg',
+        bump: 'img/bump.jpg',
+        specular: 'img/specular.jpg',
+      }
+
+      // create a globe
+      var globe = new Globe(div, urls);
+
+      // start it
+      globe.init();
+
+      // - create a random block (somewhere on earth)
+      // - center the globe to that position
+      // - spawn the block on that position (after 300ms)
+      var drawRandomLevitatingBlock = function() {
+        var data = {
+          color: '#'+Math.floor(Math.random()*16777215).toString(16),
+          size: Math.random() * 100,
+          lat: Math.random() * 160 - 80,
+          lon: Math.random() * 360 - 180,
+          size: 20
+        };
+
+        // center the globe to the position
+        globe.center(data);
+
+        setTimeout(function() {
+          // offset the lat/long so you can actually
+          // see the block levitating
+          
+          data.lat += 10;
+          data.lon += 10;
+
+          globe.addLevitatingBlock(data);
+        }, 300);
+      }
+
+      setInterval(drawRandomLevitatingBlock, 2000);
+
+    </script>
+  </body>
+</html>
