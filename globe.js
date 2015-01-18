@@ -326,20 +326,6 @@ var Globe = function(container, urls) {
     );
   }
 
-
-  
-  var calculate3dPosition = function(coords) {
-    var x = coords.x;
-    var y = coords.y;
-    var altitude = coords.altitude;
-
-    return {
-      x: altitude * Math.sin(x) * Math.cos(y),
-      y: altitude * Math.sin(y),
-      z: altitude * Math.cos(x) * Math.cos(y)
-    }
-  }
-
   // Create a block mesh and set its position in 3d
   // space just below the earths surface
   var createLevitatingBlock = function(properties) {
