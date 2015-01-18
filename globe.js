@@ -72,7 +72,7 @@ var Globe = function(container, urls) {
     scene.add(createMesh.atmosphere());
 
     // Add lights to scene
-    scene.add(new THREE.AmbientLight(0x888888));
+    scene.add(new THREE.AmbientLight(0x656565));
     scene.add(light);    
 
     // Renderer
@@ -168,7 +168,7 @@ var Globe = function(container, urls) {
     },
 
     directionalLight: function() {
-      return new THREE.DirectionalLight(0xcccccc, 0.6);
+      return new THREE.DirectionalLight(0xcccccc, 0.5);
     },
 
 
