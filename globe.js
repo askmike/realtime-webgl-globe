@@ -206,8 +206,8 @@ var Globe = function(container, urls) {
         container.addEventListener('mouseup', handle.drag.end, false);
         container.addEventListener('mouseout', handle.drag.end, false);
 
-        mouseOnDown.x = -event.clientX;
-        mouseOnDown.y = event.clientY;
+        mouseOnDown.x = -e.clientX;
+        mouseOnDown.y = e.clientY;
 
         targetOnDown.x = target.x;
         targetOnDown.y = target.y;
@@ -215,8 +215,8 @@ var Globe = function(container, urls) {
         container.style.cursor = 'move';
       },
       move: function(e) {
-        mouse.x = -event.clientX;
-        mouse.y = event.clientY;
+        mouse.x = -e.clientX;
+        mouse.y = e.clientY;
 
         var zoomDamp = distance / 1000;
 
