@@ -84,9 +84,13 @@ var Globe = function(container, urls) {
     container.appendChild(renderer.domElement);
 
     // DOM event handlers
-    container.addEventListener('mousewheel', handle.scroll, false);
     container.addEventListener('mousedown', handle.drag.start, false);
     window.addEventListener('resize', handle.resize, false);
+
+    // Scroll for Chrome
+    window.addEventListener('mousewheel', handle.scroll, false);
+    // Scroll for Firefox
+    window.addEventListener('DOMMouseScroll', handle.scroll, false);
 
     // Bootstrap render
     animate();
@@ -186,7 +190,19 @@ var Globe = function(container, urls) {
   var handle = {
     scroll: function(e) {
       e.preventDefault();
-      api.zoomRelative(e.wheelDeltaY * 0.3);
+
+      // See
+      // @link http://www.h3xed.com/programming/javascript-mouse-scroll-wheel-events-in-firefox-and-chrome
+      if(e.wheelDelta) {
+        // chrome
+        var delta = e.wheelDelta * 0.5;
+      } else {
+        // firefox
+        var delta = -e.detail * 15;
+      }
+
+      api.zoomRelative(delta);
+
       return false;
     },
 
