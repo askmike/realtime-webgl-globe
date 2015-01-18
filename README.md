@@ -43,8 +43,8 @@ A webgl earth making it easy to add custom shapes at coordinates in realtime.
 
 ### Globe(container, urls)
 
-- @param container DOM Node div
-- @param urls Object URLs of images:
+- @param (DOM Node) container div
+- @param (Object) urls URLs of images:
   - earth: String URL
   - bump: Sting URL [optional]
   - specular: String URL [optional]
@@ -57,7 +57,7 @@ Spawns the globe.
 
 ### globe.zoomRelative(delta)
 
-- @param int delta
+- @param (Number) delta
 
 Zoom the earth relatively to its current zoom.
 (passing a positive number will zoom towards
@@ -66,21 +66,21 @@ away from earth).
 
 ### globe.zoomTo(altitute)
 
-- @param int altitute
+- @param (Number) altitute
 
 Transition the altitute of the camera to a specific
 distance from the earth's core.
 
 ### globe.zoomImmediatelyTo(altitute)
 
-- @param int altitute
+- @param (Number) altitute
 
 Set the altitute of the camera to a specific
 distance from the earth's core.
 
 ### globe.center(coordinates)
 
-- @param Object coordinates:
+- @param (Object) coordinates:
   - lat: (Float) latitute position
   - lon: (Float) longtitute position
  
@@ -89,15 +89,15 @@ to the new coordinates.
 
 ### globe.centerImmediate(coordinates)
 
-- @param Object coordinates:
+- @param (Object) coordinates:
   - lat: (Float) latitute position
   - lon: (Float) longtitute position
 
 Center the globe on the new coordinates.
 
-### globe.addLevitatingBlock = function(data)
+### globe.addLevitatingBlock(data)
 
-- @param Object data:
+- @param (Object) data:
   - lat: (Float) latitute position
   - lon: (Float) longtitute position
   - size: (Float) size of block
@@ -110,7 +110,7 @@ earth.
 
 ### globe.addBlock(data)
 
-- @param Object data
+- @param (Object) data
   - lat: (Float) latitute position
   - lon: (Float) longtitute position
   - size: (Float) size of block
