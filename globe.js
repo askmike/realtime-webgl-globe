@@ -6,6 +6,7 @@
  * makes it super simple to add shapes in realtime
  * on specific lat/lon positions on earth.
  *
+ * @class Globe
  * @param {HTMLElement} container
  * @param {Object} urls - URLs of earth images
  * @param {String} urls.earth
@@ -48,8 +49,6 @@ var Globe = function Globe(container, urls) {
   /**
    * Initializes the globe
    *
-   * @memberof Globe
-   * @method init
    */
   api.init = function() {
     setSize();
@@ -424,8 +423,6 @@ var Globe = function Globe(container, urls) {
    * the earth, while a negative number will zoom
    * away from earth).
    * 
-   * @memberof Globe
-   * @method zoomRelative
    * @param  {Integer} delta
    * @return {this}
    */
@@ -440,8 +437,6 @@ var Globe = function Globe(container, urls) {
    * Transition the altitute of the camera to a
    * specific distance from the earth's core.
    *
-   * @memberof Globe
-   * @method zoomTo
    * @param  {Integer} altitute
    * @return {this}
    */
@@ -456,8 +451,6 @@ var Globe = function Globe(container, urls) {
    * Set the altitute of the camera to a specific
    * distance from the earth's core.
    *
-   * @memberof Globe
-   * @method zoomImmediatelyTo
    * @param  {Integer} altitude
    * @return {this}
    */
@@ -472,8 +465,6 @@ var Globe = function Globe(container, urls) {
    * Transition the globe from its current position
    * to the new coordinates.
    *
-   * @memberof Globe
-   * @method center
    * @param  {Object} pos - the position
    * @param  {Float} pos.lat - latitute position
    * @param  {Float} pos.lon - longtitute position
@@ -487,8 +478,6 @@ var Globe = function Globe(container, urls) {
   /**
    * Center the globe on the new coordinates.
    *
-   * @memberof Globe
-   * @method centerImmediate
    * @param  {Object} pos - the position
    * @param  {Float} pos.lat - latitute position
    * @param  {Float} pos.lon - longtitute position
@@ -505,8 +494,6 @@ var Globe = function Globe(container, urls) {
    * out of the surface until it is fully `out` of the
    * earth.
    *
-   * @memberof Globe
-   * @method addLevitatingBlock
    * @param  {Object} data
    * @param  {Float} data.lat - latitute position
    * @param  {Float} data.lon - longtitute position
@@ -527,8 +514,6 @@ var Globe = function Globe(container, urls) {
   /**
    * Adds a block to the globe.
    *
-   * @memberof Globe
-   * @method addBlock
    * @param  {Object} data
    * @param  {Float} data.lat - latitute position
    * @param  {Float} data.lon - longtitute position
@@ -544,12 +529,9 @@ var Globe = function Globe(container, urls) {
 
     return this;
   }
-
   /**
    * Remove all blocks from the globe.
-   *
-   * @memberof Globe
-   * @method removeAllBlocks
+   * 
    * @return {this}
    */
   api.removeAllBlocks = function() {
