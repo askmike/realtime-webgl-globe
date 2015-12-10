@@ -1,19 +1,18 @@
 // Realtime WebGL globe
 // Copyright (c) 2015 Mike van Rossum
-// 
-// Realtime Globe is a WebGL based earth globe that
-// makes it super simple to add shapes in realtime
-// on specific lat/lon positions on earth.
-// 
-// @param container DOM Node div
-// @param urls Object URLs of images
 
-//  {
-//    earth: String URL
-//    bump: Sting URL [optional]
-//    specular: String URL [optional]
-//  }
-var Globe = function(container, urls) {
+/**
+ * Realtime Globe is a WebGL based earth globe that
+ * makes it super simple to add shapes in realtime
+ * on specific lat/lon positions on earth.
+ *
+ * @param {HTMLElement} container
+ * @param {Object} urls - URLs of earth images
+ * @param {String} urls.earth
+ * @param {String|undefined} urls.bump (optional)
+ * @param {String|undefined} urls.specular (optional)
+ */
+var Globe = function Globe(container, urls) {
   var PI = Math.PI;
   var PI_HALF = PI / 2;
 
@@ -46,7 +45,12 @@ var Globe = function(container, urls) {
   // attach public functions to this object
   var api = {};
 
-  // Spawns the globe
+  /**
+   * Initializes the globe
+   *
+   * @memberof Globe
+   * @method init
+   */
   api.init = function() {
     setSize();
 
@@ -414,13 +418,17 @@ var Globe = function(container, urls) {
 
   //        Public functions
 
-
-  // @param int delta
-  // 
-  // Zoom the earth relatively to its current zoom.
-  // (passing a positive number will zoom towards
-  // the earth, while a negative number will zoom 
-  // away from earth)
+  /**
+   * Zoom the earth relatively to its current zoom
+   * (passing a positive number will zoom towards
+   * the earth, while a negative number will zoom
+   * away from earth).
+   * 
+   * @memberof Globe
+   * @method zoomRelative
+   * @param  {Integer} delta
+   * @return {this}
+   */
   api.zoomRelative = function(delta) {
     distanceTarget -= delta;
     checkAltituteBoundries();
@@ -428,10 +436,15 @@ var Globe = function(container, urls) {
     return this;
   }
 
-  // @param int altitute
-  // 
-  // Transition the altitute of the camera to a specific
-  // distance from the earth's core.
+  /**
+   * Transition the altitute of the camera to a
+   * specific distance from the earth's core.
+   *
+   * @memberof Globe
+   * @method zoomTo
+   * @param  {Integer} altitute
+   * @return {this}
+   */
   api.zoomTo = function(altitute) {
     distanceTarget = altitute;
     checkAltituteBoundries();
@@ -439,58 +452,68 @@ var Globe = function(container, urls) {
     return this;
   }
 
-  // @param int altitute
-  // 
-  // Set the altitute of the camera to a specific
-  // distance from the earth's core.
+  /**
+   * Set the altitute of the camera to a specific
+   * distance from the earth's core.
+   *
+   * @memberof Globe
+   * @method zoomImmediatelyTo
+   * @param  {Integer} altitude
+   * @return {this}
+   */
   api.zoomImmediatelyTo = function(altitute) {
     distanceTarget = distance = altitute;
     checkAltituteBoundries();
 
     return this;
   }
-
-
-  // @param Object coordinates
-  
-  //  {
-  //    lat: (Float) latitute position,
-  //    lon: (Float) longtitute position
-  //  }
    
-  // Transition the globe from its current position
-  // to the new coordinates.
+  /**
+   * Transition the globe from its current position
+   * to the new coordinates.
+   *
+   * @memberof Globe
+   * @method center
+   * @param  {Object} pos - the position
+   * @param  {Float} pos.lat - latitute position
+   * @param  {Float} pos.lon - longtitute position
+   * @return {this}
+   */
   api.center = function(pos) {
     target = calculate2dPosition(pos);
     return this;
   }
 
-  // @param Object coordinates
-  // 
-  //  {
-  //    lat: (Float) latitute position,
-  //    lon: (Float) longtitute position
-  //  }
-  //  
-  // Center the globe on the new coordinates.
+  /**
+   * Center the globe on the new coordinates.
+   *
+   * @memberof Globe
+   * @method centerImmediate
+   * @param  {Object} pos - the position
+   * @param  {Float} pos.lat - latitute position
+   * @param  {Float} pos.lon - longtitute position
+   * @return {this}
+   */
   api.centerImmediate = function(pos) {
     target = rotation = calculate2dPosition(pos);
     return this;
   }
 
-  // @param Object data
-  // 
-  //  {
-  //    lat: (Float) latitute position,
-  //    lon: (Float) longtitute position,
-  //    size: (Float) size of block,
-  //    color: (String) color of block
-  //  }
-  //  
-  //  Adds a block to the globe. The globe will spawn
-  //  just below the earth's surface and `levitate`
-  //  out of the surface until it is fully `out` of the
-  //  earth.
+  /**
+   * Adds a block to the globe. The globe will spawn
+   * just below the earth's surface and `levitate`
+   * out of the surface until it is fully `out` of the
+   * earth.
+   *
+   * @memberof Globe
+   * @method addLevitatingBlock
+   * @param  {Object} data
+   * @param  {Float} data.lat - latitute position
+   * @param  {Float} data.lon - longtitute position
+   * @param  {Float} data.size - size of the block
+   * @param  {String} data.color - color of the block
+   * @return {this}
+   */
   api.addLevitatingBlock = function(data) {
     var block = createLevitatingBlock(data);
 
@@ -501,16 +524,18 @@ var Globe = function(container, urls) {
     return this;
   }
 
-  // @param Object data
-  // 
-  //  {
-  //    lat: (Float) latitute position,
-  //    lon: (Float) longtitute position,
-  //    size: (Float) size of block,
-  //    color: (String) color of block
-  //  }
-  //  
-  //  Adds a block to the globe.
+  /**
+   * Adds a block to the globe.
+   *
+   * @memberof Globe
+   * @method addBlock
+   * @param  {Object} data
+   * @param  {Float} data.lat - latitute position
+   * @param  {Float} data.lon - longtitute position
+   * @param  {Float} data.size - size of the block
+   * @param  {String} data.color - color of the block
+   * @return {this}
+   */
   api.addBlock = function(data) {
     var block = createBlock(data);
 
@@ -520,7 +545,13 @@ var Globe = function(container, urls) {
     return this;
   }
 
-  // Remove all blocks from the globe.
+  /**
+   * Remove all blocks from the globe.
+   *
+   * @memberof Globe
+   * @method removeAllBlocks
+   * @return {this}
+   */
   api.removeAllBlocks = function() {
     blocks.forEach(function(block) {
       scene.remove(block);  
