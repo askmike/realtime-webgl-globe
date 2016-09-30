@@ -2,9 +2,11 @@
 
 A webgl earth making it easy to add custom shapes at coordinates in realtime.
 
-![example gif](http://mikevanrossum.nl/stuff/realtime-webgl-globe/realtime-globe.gif)
+![example gif](https://mikevanrossum.nl/stuff/realtime-webgl-globe/realtime-globe.gif)
 
-[Demo](http://mikevanrossum.nl/stuff/realtime-webgl-globe/example.html)!
+[Demo](https://mikevanrossum.nl/stuff/realtime-webgl-globe/example.html)!
+
+Or check out [this demo](https://github.com/askmike/realtime-webgl-globe/blob/master/example-iss.html) that shows the position of the International Space Station!
 
 ## Features
 

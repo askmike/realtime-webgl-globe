@@ -23,8 +23,6 @@
       
     </script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js'></script>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js'></script>
     <script src='globe.js'></script>
     <script>
 
@@ -40,30 +38,35 @@
 
       // start it
       globe.init();
-  
-    var trackIss = function() {
-      //get data from ISS tracking api
-      $.getJSON("http://api.open-notify.org/iss-now.json?callback=?", function(coords) {
-        var latitude = coords.iss_position.latitude;
-        var longitude = coords.iss_position.longitude;
-        //create & render ISS object on globe
-          var data = {
-            color: '#FF0000',
-            size: 5,
-            lat: latitude,
-            lon: longitude,
-          };
-          // center the globe to the position
-          globe.center(data);
-          setTimeout(function() {
-            globe.addBlock(data);
-          }, 300);
-          //Create animation moving ISS(its not a very fliud animation for now)
-          globe.removeAllBlocks();
-       });
+
+      // - create a random block (somewhere on earth)
+      // - center the globe to that position
+      // - spawn the block on that position (after 300ms)
+      var drawRandomLevitatingBlock = function() {
+        var data = {
+          color: '#'+Math.floor(Math.random()*16777215).toString(16),
+          size: Math.random() * 100,
+          lat: Math.random() * 160 - 80,
+          lon: Math.random() * 360 - 180,
+          size: 20
+        };
+
+        // center the globe to the position
+        globe.center(data);
+
+        setTimeout(function() {
+          // offset the lat/long so you can actually
+          // see the block levitating
+          
+          data.lat += 10;
+          data.lon += 10;
+
+          globe.addLevitatingBlock(data);
+        }, 300);
       }
-      setInterval(trackIss, 2000);
-      
+
+      setInterval(drawRandomLevitatingBlock, 2000);
+
     </script>
   </body>
 </html>
